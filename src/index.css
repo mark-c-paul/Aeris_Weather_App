@@ -1,0 +1,15 @@
+.weather_app{
+  width: 100%;
+  display: flex;
+  margin-top: 12%;
+  background-color: white;
+}
+
+.btn{
+  position: absolute;
+}
+
+#btn{
+  width: 98.8vw;
+  height: 5vh;
+}
