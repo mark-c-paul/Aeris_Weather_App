@@ -7,13 +7,10 @@ export default class Forecast extends Component {
 
     console.log("In forecast component", values);
     return values.map(weather => {
-      let date = weather.dateTimeISO
-        .split("")
-        .slice(0, 10)
-        .join("");
+      var fulldate = new Date(weather.dateTimeISO).toString().slice(0, 15);
       return (
         <div className="forecast_container">
-          <span className="dataTimeISO">{date}</span>
+          <span className="dataTimeISO">{fulldate}</span>
           <div className="forecast_img_container">
             <img
               src={require(`./icons/${weather.icon}`)}

@@ -36,7 +36,7 @@ class WeatherApp extends Component {
       <form>
       <fieldset>
          <div class="form-group">
-           <label for="Student">Postal/Zip Code: </label>
+           <label for="code">Postal/Zip Code: </label>
            <input name="location" 
                   size="6" 
                   placeholder="V1B3K4"
@@ -61,32 +61,4 @@ class WeatherApp extends Component {
 
 export default WeatherApp;
 
-
-
-
-/**
- * 
- * 
- * 
- * 
- * 
- *  <div className="day1_container">
-          <span className="dataTimeISO">
-            {weekly_forecast ? weekly_forecast[0].dateTimeISO : ""}
-          </span>
-          <div className="forecast_img_container">
-            <img
-              src={
-                weekly_forecast
-                  ? require(`./icons/${weekly_forecast[0].icon}`)
-                  : ""
-              }
-              className="forecast_img"
-            />
-          </div>
-          <div className='temp_data'>
-              High: {weekly_forecast ? weekly_forecast[0].maxTempF : ""}<br/>
-              Low: {weekly_forecast ? weekly_forecast[0].minTempF : ""}
-          </div>
-        </div>
- */
+ 
