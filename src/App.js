@@ -2,13 +2,20 @@ import React, { Component } from "react";
 import w_api from "./weatherAPI";
 import Forecast from './Forecast'
 
+let CLIENT_SECRET="5KmCGBqh2wOaaDXRbUE2xa1SyqniaC6fCqUk1R1j";
+let CLIENT_ID="Cr0YRR2ZeUaVOkc1dzisr";
+
 class WeatherApp extends Component {
   constructor() {
     super();
     this.state = {
       data: null,
       weekly_forecast: null,
-      clicked: false
+      clicked: false,
+      location: 'V1B3K4',
+      format: 'json',
+      filter: 'days',
+      limit: '7'
     };
   }
 
@@ -26,17 +33,29 @@ class WeatherApp extends Component {
       });
   }
   
-  handleChange = (e) => {
+  handleChangelocation = (e) => {
     this.setState({
-      code: e.target.code,
-      format: e.target.format,
-      filter: e.target.filter,
-      limit: e.target.limit
+      location: e.target.value,
+    });
+  };
+  handleChangeFormat = (e) => {
+    this.setState({
+      format: e.target.value
+    });
+  };
+  handleChangeFilter = (e) => {
+    this.setState({
+      filter: e.target.value
+    });
+  };
+  handleChangeLimit = (e) => {
+    this.setState({
+      limit: e.target.value
     });
   };
   
   render() {
-    const { data, weekly_forecast, clicked} = this.state;
+    const { data, weekly_forecast, clicked, location, format, filter, limit} = this.state;
     console.log("Data Collected", weekly_forecast, clicked);
     return (
     <div className="wrapper">
@@ -44,22 +63,20 @@ class WeatherApp extends Component {
       <form>
       <fieldset>
          <div class="form-group">
-           <label for="Code">Postal/Zip Code: </label>
-           <input id="inputCode"
+           <label for="Location">Location: </label>
+           <input id="inputLocation"
                   type="text"           
-                  size="6" 
+                  size="30" 
                   placeholder="V1B3K4"
-                  minlength="5"
-                  maxlength="6"
-                  onChange={this.handleChange}
-                  value={this.state.code}
+                  onChange={event => this.handleChangelocation(event)}
+                  value={this.state.location}
                   />
            <label for="Format">  Format: </label>
            <input id="inputFormat"
                   type="text"
                   size="6" 
                   placeholder="json"
-                  onChange={this.handleChange}
+                  onChange={event => this.handleChangeFormat(event)}
                   value={this.state.format}
                   />
            <label for="Filter">  Filter: </label>
@@ -67,7 +84,7 @@ class WeatherApp extends Component {
                   type="text"
                   size="6" 
                   placeholder="days"
-                  onChange={this.handleChange}
+                  onChange={event => this.handleChangeFilter(event)}
                   value={this.state.filter}
                   />
            <label for="Limit">  Limit: </label>
@@ -75,16 +92,16 @@ class WeatherApp extends Component {
                   type="text"
                   size="6" 
                   placeholder="7"
-                  onChange={this.handleChange}
+                  onChange={event => this.handleChangeLimit(event)}
                   value={this.state.limit}
                   />
          </div>
        </fieldset>
        <h3 for="Query"> 
        Query: <a href = {'https://api.aerisapi.com/forecasts/'
-       + this.inputCode + '?&format=' + this.inputFormat + '&filter=' + this.inputFilter + '&limit=' + this.inputLimit +
-       '&client_id=Cr0YRR2ZeUaVOkc1dzisr&client_secret=5KmCGBqh2wOaaDXRbUE2xa1SyqniaC6fCqUk1R1j'
-       }>Link</a>
+       + this.state.location + '?&format=' + this.state.format + '&filter=' + this.state.filter + '&limit=' + this.state.limit +
+       '&client_id=' + CLIENT_ID + '&client_secret=' + CLIENT_SECRET
+       }>https://api.aerisapi.com/forecasts/${this.state.location}?&format=${this.state.format}&filter=${this.state.filter}&limit=${this.state.limit}&client_id=Cr0YRR2ZeUaVOkc1dzisr&client_secret=5KmCGBqh2wOaaDXRbUE2xa1SyqniaC6fCqUk1R1j</a>
        </h3>
        <p>
        <button type="submit">Submit</button>
@@ -100,7 +117,7 @@ class WeatherApp extends Component {
     );
   }
 }
-
 export default WeatherApp;
+
 
  
