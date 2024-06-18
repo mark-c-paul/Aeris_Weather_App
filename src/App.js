@@ -2,8 +2,9 @@ import React, { Component } from "react";
 import w_api from "./weatherAPI";
 import Forecast from './Forecast'
 
-let CLIENT_SECRET="5KmCGBqh2wOaaDXRbUE2xa1SyqniaC6fCqUk1R1j";
-let CLIENT_ID="Cr0YRR2ZeUaVOkc1dzisr";
+//replace strings with proper credentials
+let CLIENT_SECRET="REMOVED";
+let CLIENT_ID="REMOVED";
 
 class WeatherApp extends Component {
   constructor() {
@@ -98,10 +99,10 @@ class WeatherApp extends Component {
          </div>
        </fieldset>
        <h3 for="Query"> 
-       Query: <a href = {'https://api.aerisapi.com/forecasts/'
+       Query: <a href = {'https://dbef4efb-43cb-4325-92c6-cbcf9278359b.mock.pstmn.io/forecasts/'
        + this.state.location + '?&format=' + this.state.format + '&filter=' + this.state.filter + '&limit=' + this.state.limit +
        '&client_id=' + CLIENT_ID + '&client_secret=' + CLIENT_SECRET
-       }>https://api.aerisapi.com/forecasts/${this.state.location}?&format=${this.state.format}&filter=${this.state.filter}&limit=${this.state.limit}&client_id=Cr0YRR2ZeUaVOkc1dzisr&client_secret=5KmCGBqh2wOaaDXRbUE2xa1SyqniaC6fCqUk1R1j</a>
+       }>https://api.aerisapi.com/forecasts/${this.state.location}?&format=${this.state.format}&filter=${this.state.filter}&limit=${this.state.limit}</a>
        </h3>
        <p>
        <button type="submit">Submit</button>

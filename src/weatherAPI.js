@@ -4,8 +4,9 @@ import WeatherApp from './App.js'
 
 var zip = 'V1B3K4';
 var path = 'https://api.aerisapi.com/forecasts/';
-var clientID = '&client_id=Cr0YRR2ZeUaVOkc1dzisr';
-var clientSecret = '&client_secret=5KmCGBqh2wOaaDXRbUE2xa1SyqniaC6fCqUk1R1j';
+//Replace String with aeris credentials
+var clientID = '&' + 'REMOVED';
+var clientSecret = '&' + 'REMOVED';
 var format = '?&format=json';
 var filter = '&filter=day';
 var limit = '&limit=7';
